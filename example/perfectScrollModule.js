@@ -1,4 +1,5 @@
 angular.module('perfectScrollModule',[])
+    //use this directive when you want to scroll to top on click of an event
     .directive('scrollTop',[function(){
     "use strict";
         return {
@@ -12,8 +13,8 @@ angular.module('perfectScrollModule',[])
             }
         };
     }])
-
-    .directive('perfectScroll', ['$window','$rootScope',function($window, $rootScope) {
+    //perfect scroll directive
+    .directive('perfectScroll', ['$window','$parse',function($window,$parse) {
         return {
             restrict: 'A',
             link: function(scope, element, attrs) {
@@ -24,18 +25,19 @@ angular.module('perfectScrollModule',[])
                     return;
                 }
 
-
+                //add CSS which is neccessary for the scrollbar to work
                 var applyScrollbarCSS    =   function(){
                     element.css('overflow','hidden');
                     element.css('position','relative');
                 };
 
+                //when scrollbar is destroyed this function is used
                 var revertScrollbarCss  =   function(){
                     element.css('overflow','initial');
                     element.css('position','relative');
                 };
 
-
+                //set height of the element as this is also required for the scrollbar to work
                 var setHeightOfElement  =   function(){
                     if(attrs.perfectScroll){
                         element.css('height',attrs.perfectScroll+"px");
@@ -44,32 +46,38 @@ angular.module('perfectScrollModule',[])
                     }
                 };
 
+
                 setHeightOfElement();
                 applyScrollbarCSS();
 
-                
+                //prepare object to be passed to the perfect scroll plugin
+                //parse is used as value passed from attr is string and of no use to us
                 var perfectScrollObject =   {
-                    wheelSpeed: attrs.wheelSpeed ? attrs.wheelSpeed :  50,
-                    wheelPropagation: attrs.wheelPropagation ? attrs.wheelPropagation :  false,
-                    minScrollbarLength: attrs.minScrollbarLength ? attrs.minScrollbarLength :  false,
-                    useBothWheelAxes: attrs.useBothWheelAxes ? attrs.useBothWheelAxes :  false,
-                    suppressScrollX: attrs.suppressScrollX ? attrs.suppressScrollX :  false,
-                    suppressScrollY: attrs.suppressScrollY ? attrs.suppressScrollY :  false,
+                    wheelSpeed: $parse(attrs.wheelSpeed)() || 50,
+                    wheelPropagation: $parse(attrs.wheelPropagation)() || false,
+                    minScrollbarLength: $parse(attrs.minScrollbarLength)() || false,
+                    useBothWheelAxes: $parse(attrs.useBothWheelAxes)() || false,
+                    suppressScrollX: $parse(attrs.suppressScrollX)() || false,
+                    suppressScrollY: $parse(attrs.suppressScrollY)() || false
                 };
 
-
+                //if padding is applied then add padding,scrollbar looks better this way
                 if(attrs.scrollPadding){
                     element.css('padding-right',attrs.scrollPadding+"px");
                 }
 
-                element.perfectScrollbar({suppressScrollX:true});
+                //apply the scrollbar to the element
+                element.perfectScrollbar(perfectScrollObject);
+
+                //when window is resized change the scroll bar
                 windowObj.resize(function(){
                     "use strict";
                     element.perfectScrollbar('destroy');
                     revertScrollbarCss();
 
+                    //if the width of the screen is greater than 768 then update the scrollbar
+                    //cause scroll in touch devices suck.
                     if(windowObj.width() > 768){
-                        console.log(perfectScrollObject);
                         element.perfectScrollbar(perfectScrollObject);
                         setHeightOfElement();
                         applyScrollbarCSS();
@@ -86,11 +94,13 @@ angular.module('perfectScrollModule',[])
                     return totalHeight;
                 };
 
+                //update the actual height of the element
                 scope.$watch(function(){
                     "use strict";
                     scope.elementHeight =   actualHeight();
                 });
 
+                //update the scrollbar when the actual height of the element is changed
                 scope.$watch('elementHeight',function(){
                     "use strict";
                     element.perfectScrollbar('update');
