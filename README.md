@@ -68,17 +68,17 @@ To give 15px right padding to the div, to prevent the scollbar from overlapping 
 
 Dependencies
 ==================
-jquery.js
-jquery.mousewheel.js
-perfect-scroll.js
+-jquery.js
+-jquery.mousewheel.js
+-perfect-scroll.js
 
 
 Usage
 ===================
-// for making the height of the div same as the window and suppresing horizontal scroll
+-// for making the height of the div same as the window and suppresing horizontal scroll
 <div perfect-scroll scroll-padding="15" suppress-scroll-x="true"> 
 
-//for making the height of the div to 300px and suppressing the horizontal scroll
+-//for making the height of the div to 300px and suppressing the horizontal scroll
 <div perfect-scroll="300" scroll-padding="15" suppress-scroll-x="true">
 
 
