@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <script data-require="jquery@2.0.1" data-semver="2.0.1" src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+    <script data-require="angular.js@1.2.15" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular.js"></script>
+    <script src="jquery.mousewheel.js"></script>
+    <script src="perfect-scrollbar.js"></script>
+    <script src="perfectScrollModule.js"></script>
+    <script src="app.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="perfectscroll.min.css" />
+    <!-- endbuild -->
+  </head>
+
+  <body ng-app="perfectScrollAngularApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="container" ng-controller="MainCtrl">
+      <div perfect-scroll="" scroll-padding="15" suppress-scroll-x="true">
+        <div class="header">
+          <ul class="nav nav-pills pull-right">
+            <li class="active">
+              <a ng-href="#">Home</a>
+            </li>
+            <li>
+              <a ng-href="#">About</a>
+            </li>
+            <li>
+              <a ng-href="#">Contact</a>
+            </li>
+          </ul>
+          <h3 class="text-muted">Perfect Scroll Angular</h3>
+        </div>
+        <div class="jumbotron">
+          <h1>'Allo, 'Allo!</h1>
+          <p class="lead">
+                Always a pleasure scaffolding your apps.
+            </p>
+          <p>
+            <a class="btn btn-lg btn-success" ng-click="increaseDummyText()">Increase Dummy text</a>
+          </p>
+        </div>
+        <div class="row marketing">
+          <h4>HTML5 Boilerplate</h4>
+          <p>
+                HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+            </p>
+          <h4>Angular</h4>
+          <p>
+                AngularJS is a toolset for building the framework most suited to your application development.
+            </p>
+          <h4>Karma</h4>
+          <p>Spectacular Test Runner for JavaScript.</p>
+          <div>
+            <ul >
+              <li ng-repeat="dummy in dummies">
+                {{dummy}}
+              </li>  
+              
+            </ul>
+          </div>
+        </div>
+        <div class="footer">
+          <p>♥ from the Yeoman team</p>
+        </div>
+      </div>
+    </div>
+    <!-- endbuild -->
+  </body>
+
+</html>
