@@ -10,8 +10,47 @@ Features
 ===========================
 - Support for keyboard.
 - Support for vertical as well as horizontal scroll.
+- Support for perfect-scrollbar's optional parameters.
 - Auto updating when height of the content inside div(on which directive is applied) increases.
 - No hacks like timeout included in the code to update the scroll bar.
+
+Dependencies
+==================
+- jquery.js
+- jquery.mousewheel.js
+- perfect-scroll.js
+
+Installation
+===================
+Include the following dependencies into your index.html
+
+```html
+<script src="jquery.mousewheel.js"></script>
+<script src="perfect-scrollbar.js"></script>
+<script src="perfectScrollModule.js"></script> 
+
+<link rel="stylesheet" href="perfectscroll.min.css" />
+```
+
+Inject ng-perfect-scroll into your app
+```html
+angular.module('perfectScrollAngularApp', ['perfectScrollModule']);
+```
+
+How to use
+===================
+For making the height of the div same as the window and suppresing horizontal scroll
+
+```html
+<div perfect-scroll scroll-padding="15" suppress-scroll-x="true"> 
+```
+
+
+For making the height of the div to 300px and suppressing the horizontal scroll
+
+```html
+<div perfect-scroll="300" scroll-padding="15" suppress-scroll-x="true">
+```
 
 Optional Parameters
 ===========================
@@ -65,29 +104,6 @@ Default: 0
 ###scrollPadding
 
 To give 15px right padding to the div, to prevent the scollbar from overlapping the content inside the div.
-
-Dependencies
-==================
-- jquery.js
-- jquery.mousewheel.js
-- perfect-scroll.js
-
-
-How to use
-===================
-For making the height of the div same as the window and suppresing horizontal scroll
-
-```html
-<div perfect-scroll scroll-padding="15" suppress-scroll-x="true"> 
-```
-
-
-For making the height of the div to 300px and suppressing the horizontal scroll
-
-```html
-<div perfect-scroll="300" scroll-padding="15" suppress-scroll-x="true">
-```
-
 
 
 
